@@ -1,0 +1,28 @@
+{% extends "head.html" %}
+
+{% block content %}
+
+    {% if request.user %}
+        <div class="form-page">
+            <div class="form">
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="centered">
+                    <form action="" method="post" class="centered">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Username" name="username" style="margin: 10px 0">
+                        <input type="password" placeholder="Password" name="password" style="margin: 10px 0">
+                        {#                        <input type="number" placeholder="Phone" name="phone" style="margin: 10px 0">#}
+                        <button type="submit">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
